@@ -8,7 +8,30 @@ const app = new Vue(
     {
         el: '#app',
         data: {
-            
+            emails: []
         },
+        methods: {
+            randomEmailPush() {
+                axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
+                    .then((risposta) => {
+                        // con successo
+                    this.emails.push(risposta.data.response) 
+                    })
+                    .catch((error) => {
+                        // insuccesso error
+                        console.log(error);
+                    });  
+            },
+
+            // stampa 10 indirizzi email random
+            tenrandomEmailPush() {
+                for (let i = 0; i < 10; i++) {
+                    this.randomEmailPush();
+                }
+            }
+        },
+        mounted() {
+            this.tenrandomEmailPush();
+        }
     }
 )

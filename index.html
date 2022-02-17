@@ -9,7 +9,14 @@
 <body>
     
     <div id="app">
-        
+        <div class="container">
+
+            <!-- mostra email solo se sono almeno 10 indirizzi random -->
+            <ul v-if="emails.length >= 10">
+                <!-- stampa le email -->
+                <li v-for="email in emails">{{email}}</li>
+            </ul>
+        </div>
     </div>
 
     <!-- LINK VUE  -->
